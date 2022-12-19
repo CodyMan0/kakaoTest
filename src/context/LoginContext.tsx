@@ -1,7 +1,17 @@
-import React from 'react';
+import { createContext, useState, useMemo, useContext } from 'react';
+import { getLocalStorage, TOKEN_NAME } from '../utils/localStorage';
 
-const LoginContext = () => {
-  return <div>LoginContext</div>;
+export const LoginContext = createContext<unknown>(null);
+
+export const LoginProvider = ({ children }: any) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!getLocalStorage({ name: TOKEN_NAME })
+  );
+  const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
+
+  return (
+    <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
+  );
 };
 
-export default LoginContext;
+export const useAuth = () => useContext(LoginContext);
