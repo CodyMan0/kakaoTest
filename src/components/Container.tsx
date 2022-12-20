@@ -15,9 +15,9 @@ const MainContainer = styled.div`
 
 const SubContainer = styled.div`
   position: relative;
-  padding: 16px;
+  padding: 30px;
   width: 500px;
-  height: 90%;
+  height: 80%;
   margin: 0 auto;
   background-color: white;
   border-radius: 16px;

@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
+import { LOGIN } from '../constants/contants';
+import useAxios from '../hooks/useAxios';
 
 const SignIn = () => {
+  const [signInAndUp, { data: signInAndUpData, error: signInAndUpError }] =
+    useAxios();
+
   const [signInInfo, setSignInInfo] = useState({
     email: '',
     password: '',
@@ -16,6 +21,12 @@ const SignIn = () => {
   const onHandleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setSignInInfo({ ...signInInfo, [name]: value });
+  };
+
+  const onClickHandler = async (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.preventDefault();
   };
 
   return (
@@ -43,15 +54,15 @@ const SignIn = () => {
         </Form>
       </Wrapper>
       <P></P>
-      <ImgContainer>
-        <Img src="./public/kakaoLargeLogin.png" alt="df" />
+      <ImgContainer onClick={e => onClickHandler(e)}>
+        <Img src="./kakaoLargeLogin.png" alt="df" />
       </ImgContainer>
     </Container>
   );
 };
 const ImgContainer = styled.div`
   margin: 0 auto;
-  margin-left: 40px;
+  margin-left: 50px;
   width: 90%;
 `;
 
