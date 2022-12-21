@@ -2,17 +2,17 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { LOGIN } from '../constants/contants';
 
-type data = {
-  data:
-    | (() => Promise<void>)
-    | { data: undefined; isLoading: boolean; error: undefined };
-};
+export interface Status {
+  data: string;
+  isLoading: boolean;
+  error: string;
+}
 
 const useAxios = () => {
-  const [response, setResponse] = useState({
-    data: undefined,
+  const [response, setResponse] = useState<Status>({
+    data: '',
     isLoading: false,
-    error: undefined,
+    error: '',
   });
 
   const axiosKakaoLogin = async () => {
@@ -34,6 +34,6 @@ const useAxios = () => {
     axiosKakaoLogin();
   }, []);
 
-  return [axiosKakaoLogin, { ...response }];
+  return [axiosKakaoLogin, response];
 };
 export default useAxios;

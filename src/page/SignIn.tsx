@@ -2,12 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
 import { LOGIN } from '../constants/contants';
-import useAxios from '../hooks/useAxios';
 
 const SignIn = () => {
-  const [signInAndUp, { data: signInAndUpData, error: signInAndUpError }] =
-    useAxios();
-
   const [signInInfo, setSignInInfo] = useState({
     email: '',
     password: '',
