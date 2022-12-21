@@ -28,6 +28,7 @@ const SignIn = () => {
     <Container>
       <Wrapper>
         <Header>로그인</Header>
+        <Header>로그인</Header>
         <Form onSubmit={e => onHandleSubmit(e)}>
           <Label htmlFor="email">email</Label>
           <Input
