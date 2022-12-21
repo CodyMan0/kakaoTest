@@ -3,7 +3,7 @@ import SignIn from './page/SignIn';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/kakaoGroupPage">
       <Routes>
         <Route path="/" element={<SignIn />} />
       </Routes>
